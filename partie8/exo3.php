@@ -14,8 +14,8 @@ echo "<p>Le soleil se lève à " . date("H:m:s",$soleil["sunrise"]) . " et il se
 if(time()<$soleil['transit']){
     //matin
     $max = $soleil['transit']-$soleil['sunrise'];
-    $avancement = time()-$soleil['sunrise'];
-    var_dump($avancement);
+    $test = time()-$soleil['sunrise'];
+    var_dump($test);
     $testx = ($wimg/2) *(1+($test/100))-$wimg;
 
     $testy = ($himg-40) *(1+($test/100));
