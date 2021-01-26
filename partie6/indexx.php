@@ -15,7 +15,10 @@ if (isset($_POST['nom'])) $nom = $_POST['nom'];
 if (isset($_POST['prenom'])) $prenom = $_POST['prenom'];
 if (isset($_POST['civilite'])) $civilite = $_POST['civilite'];
 if (isset($_POST['inputfile'])) $uploadedfile = $_POST['inputfile'] ;
-if (isset($uploadedfile)) {
+
+// $ext = pathinfo($_files['inputfile']['name']['extension'])
+// $ext = pathinfo($uploadedfile['name'],PATHINFO_EXTENSION);
+ if (isset($uploadedfile)) {
     $i= strrpos($uploadedfile,".");
     $basename= substr($uploadedfile,0,$i);
     $ext = substr($uploadedfile,$i+1, strlen($uploadedfile));

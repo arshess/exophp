@@ -22,8 +22,9 @@ if (isset($uploadedfile)) {
         //on fixe le nom d'arrivée du fichier et son nom temporaire sur le serveur
         $target_file = "images/".$name.".".$ext;
         $tmp_name = $_FILES["inputfile"]["tmp_name"];
-        move_uploaded_file($tmp_name, $target_file);
-        $img=$target_file;
+        if(move_uploaded_file($tmp_name, $target_file)){
+            $img=$target_file;
+        }else{echo "erreur upload";}
     }
     else{
         die("pas une image");

@@ -20,6 +20,8 @@ else{
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap" rel="stylesheet"> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> 
     <style>
     body{
@@ -42,6 +44,9 @@ else{
         opacity : 0.80;
         
     }
+    h1, .calendar, .entetetableau{
+        font-family: 'Hachi Maru Pop', cursive;
+    }
 
     .calendar{
         border-radius : 10px;
@@ -60,7 +65,6 @@ else{
     .calendar .row:last-child div:last-child{
         border-radius : 0 0 10px 0;
     }
-
     </style>
 </head>
 <body>
@@ -109,7 +113,7 @@ else{
 
     <h1 class="text-center text-white fw-bold my-3">Calendrier de <?=tradDate($mois) . " " . $year?></h1>
 
-    <div class="row text-white text-end fw-bold">
+    <div class="row entetetableau text-white text-end fw-bold">
         <div class="col">Lundi</div>
         <div class="col">Mardi</div>
         <div class="col">Mercredi</div>
@@ -140,7 +144,7 @@ else{
             for ($fk=0; $fk < $compteuralacon ; $fk++) { 
                 $day = date("d", mktime(0,0,0,$month,$j,$year));
                 $j++;
-                echo "<div class='col case horsmois '>" . $day . "</div>";
+                echo "<div class='col case horsmois'>" . $day . "</div>";
             }
         }
         //cases du mois

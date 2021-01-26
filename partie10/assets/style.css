@@ -1,0 +1,45 @@
+body{
+    /* margin-top : -15px; */
+    background : #000000 url("ht tps://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/333980/ccb7e1234dc90b6e83c08f62d148fdc42fd67dec.png") no-repeat fixed;
+    background-size : 100%;
+    /* font-size : 12px; */
+    /* font-family: 'Press Start 2P', cursive; */
+    /* background: rgb(51,48,60); */
+    /* background: linear-gradient(180deg, rgba(51,48,60,1) 36%, rgba(42,45,52,1) 100%); */
+}
+h1{
+    margin-top : 50px;
+    color : #CCE0CC;        
+    margin-left : 10px;
+}
+
+h1,h2,h5{
+    margin : 20px 0 10px 0;
+}
+h2{
+    color : black;
+}
+form{
+    background : #cce0ccee;
+    border-radius : 15px;
+}
+input, select{
+    margin : 0px 0 15px 0;
+}
+label{
+    margin : 0 0 0 0;
+}
+.input-group-text{
+    color : #857A76;
+}
+.btn-submit, .btn-reset{
+    color : #CCE0CC;
+    font-weight: bold;    
+}
+.btn-submit{
+    background : #928386;
+}
+.btn-reset{
+    background : #8D897C;
+    
+}
