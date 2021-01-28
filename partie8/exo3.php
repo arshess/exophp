@@ -1,4 +1,5 @@
 <?php
+//setlocale(LC_ALL, 'fr_FR.utf-8');
 $wimg =  775;
 $himg = 238;
 $date = date("l d F Y");

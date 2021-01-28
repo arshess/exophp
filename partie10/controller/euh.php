@@ -1,83 +1,21 @@
-<?php    
-function accueil(){
-    $init=true;
-    global $countries;
-    //init variables
-    $input['FirstName'] = '';
-    $input['LastName'] = '';
-    $input['BirthDay'] = '';
-    $input['BirthPlace'] = 'France';
-    $input['Nationnalite'] = '';
-    $input['NumRue'] = '';
-    $input['Rue'] = '';
-    $input['CP'] = '';
-    $input['City'] = '';
-    $input['Mail'] = '';
-    $input['Phone'] = '';
-    $input['Diplome'] = '';
-    $input['Anpe'] = '';
-    $input['CodecAdemy'] = '';
-    $input['BadgeCodec'] = '';
-    $input['SuperHero'] = '';
-    $input['Hack'] = '';
-    $input['Exp'] = 'Caramba';
-    $Validate['BirthDay']='';
-    $Validate['BirthPlace']='';
-    $Validate['City']='';
-    $Validate['BadgeCodec']='';
-    $Validate['NumRue']='';
-    $Validate['Rue']='';
-    $Validate['CodecAdemy']='';
-    $Validate['CP']='';
-    $Validate['Diplome']='';
-    $Validate['Exp']="";
-    $Validate['FirstName']='';
-    $Validate['LastName']='';
-    $Validate['Nationnalite']='';
-    $Validate['Mail']='';
-    $Validate['Phone']='';
-    $Validate['Anpe']='';
-    $Validate['SuperHero']='';
-    $Validate['Hack']='';
-    //si on a submit le form, alors on fais les tests
-    if(isset($_POST['submit'])){     
-        //variables plus courtes
-        $init=0;
-        $input['FirstName'] = ucfirst(htmlentities(trim($_POST['inputFirstName'])));
-        $input['LastName'] = ucfirst(htmlentities(trim($_POST['inputLastName'])));
-        $input['BirthDay'] = htmlentities(trim($_POST['inputBirthDay']));
-        $input['BirthPlace'] = htmlentities(trim($_POST['inputCountry']));
-        $input['Nationnalite'] = htmlentities(trim($_POST['inputNationalite']));
-        $input['NumRue'] = htmlentities(trim($_POST['inputNumRue']));
-        $input['Rue'] = htmlentities(trim($_POST['inputRue']));
-        $input['CP'] = htmlentities(trim($_POST['inputCP']));
-        $input['City'] = ucfirst(htmlentities(trim($_POST['inputCity'])));
-        $input['Phone'] = htmlentities(trim($_POST['inputPhone']));
-        $input['Mail'] = htmlentities(trim($_POST['inputMail']));
-        $input['Diplome'] = htmlentities(trim($_POST['inputDiplome']));
-        $input['Anpe'] = htmlentities(trim($_POST['inputAnpe']));
-        $input['CodecAdemy'] = htmlentities(trim($_POST['inputCodecAdemy']));
-        $input['BadgeCodec'] = htmlentities(trim($_POST['inputBadgeCodec']));
-        $input['SuperHero'] = htmlentities(trim($_POST['inputSuperHero']));
-        $input['Hack'] = htmlentities(trim($_POST['inputHack']));
-        $input['Exp'] = htmlentities(trim($_POST['inputExp']));
-        //tests
-        foreach ($input as $key =>$value) {
-            $Validate[$key]= VerifForm($key,$value);
-        }
-    }
+<?php
+global $countries;
+require('../utils/regex.php');
 
-    if($init==true || array_search('is-invalid',$Validate)){
-        require('./vue/VueAccueil.php');        
-    }
-    else
-        require('./vue/VueGG.php');
+$key = htmlspecialchars(array_key_first($_GET));
+$value = htmlspecialchars($_GET[$key]);
+// var_dump($key);
+if($key=='inputExpY'|| $key=='inputExpN'){
+    $key = 'inputExp';
 }
+echo VerifForm($key,$value);
+
+
 
 function VerifForm($key,$value){
     global $countries;
     switch ($key) {
-        case 'FirstName':
+        case 'inputFirstName':
             if(preg_match(REGEXNAME, $value)){
                 $Validate="is-valid";
             }
@@ -85,7 +23,7 @@ function VerifForm($key,$value){
                 $Validate="is-invalid";
             }
         break;
-        case 'LastName':
+        case 'inputLastName':
             if(preg_match(REGEXNAME, $value)){
                 $Validate="is-valid";
             }
@@ -93,7 +31,7 @@ function VerifForm($key,$value){
                 $Validate="is-invalid";
             }
         break;
-        case 'BirthDay':
+        case 'inputBirthDay':
             if(preg_match(REGEXBIRTHDAY, $value)){
                 $Validate="is-valid";
             }
@@ -101,7 +39,7 @@ function VerifForm($key,$value){
                 $Validate="is-invalid";
             }
         break;
-        case 'BirthPlace':
+        case 'inputBirthPlace':
             if(in_array($value,$countries)){
                 $Validate="is-valid";
             }
@@ -109,7 +47,7 @@ function VerifForm($key,$value){
                 $Validate="is-invalid";
             }
         break;
-        case 'Nationnalite':
+        case 'inputNationalite':
             if(preg_match(REGEXNATIONALITE, $value)){
                 $Validate="is-valid";
             }
@@ -117,7 +55,7 @@ function VerifForm($key,$value){
                 $Validate="is-invalid";
             }
         break;
-        case 'NumRue':
+        case 'inputNumRue':
             if(preg_match(REGEXNUMRUE, $value)){
                 $Validate="is-valid";
             }
@@ -125,7 +63,7 @@ function VerifForm($key,$value){
                 $Validate="is-invalid";
             }
         break;
-        case 'Rue':
+        case 'inputRue':
             if(!preg_match(REGEXSTRING, $value)){
                 $Validate="is-valid";
         
@@ -134,7 +72,7 @@ function VerifForm($key,$value){
                 $Validate="is-invalid";
             }
         break;
-        case 'CP':
+        case 'inputCP':
             if(preg_match(REGEXCP, $value)){
                 $Validate="is-valid";
         
@@ -143,7 +81,7 @@ function VerifForm($key,$value){
                 $Validate="is-invalid";
             }
         break;
-        case 'City':
+        case 'inputCity':
             if(!preg_match(REGEXCITY, $value)){
                 $Validate="is-valid";        
             }
@@ -151,7 +89,7 @@ function VerifForm($key,$value){
                 $Validate="is-invalid";
             }
         break;
-        case 'Phone':
+        case 'inputPhone':
             if(preg_match(REGEXPHONE, $value)){
                 $Validate="is-valid";
             }
@@ -159,7 +97,7 @@ function VerifForm($key,$value){
                 $Validate="is-invalid";
             }
         break;
-        case 'Mail':
+        case 'inputMail':
             if(preg_match(REGEXMAIL, $value)){
                 $Validate="is-valid";
             }
@@ -167,7 +105,7 @@ function VerifForm($key,$value){
                 $Validate="is-invalid";
             }
         break;
-        case 'Diplome':
+        case 'inputDiplome':
             if(preg_match(REGEXDIPLOME, $value)){
                 $Validate="is-valid";
             }
@@ -175,7 +113,7 @@ function VerifForm($key,$value){
                 $Validate="is-invalid";
             }
         break;
-        case 'Anpe':
+        case 'inputAnpe':
             if(preg_match(REGEXANPE, $value)){
                 $Validate="is-valid";
             }
@@ -183,7 +121,7 @@ function VerifForm($key,$value){
                 $Validate="is-invalid";       
             }
         break;
-        case 'CodecAdemy':
+        case 'inputCodecAdemy':
             if(preg_match(REGEXCODECURL, $value)){
                 $Validate="is-valid";
             }
@@ -191,7 +129,7 @@ function VerifForm($key,$value){
                 $Validate="is-invalid";        
             }
         break;
-        case 'BadgeCodec':
+        case 'inputBadgeCodec':
             if(preg_match(REGEXBADGE, $value)){
                 $Validate="is-valid";
             }
@@ -199,7 +137,7 @@ function VerifForm($key,$value){
                 $Validate="is-invalid";        
             }
         break;
-        case 'SuperHero':
+        case 'inputSuperHero':
             if(!preg_match(REGEXSTRING, $value)){
                 $Validate="is-valid";
             }
@@ -207,7 +145,7 @@ function VerifForm($key,$value){
                 $Validate="is-invalid";        
             }
         break;
-        case 'Hack':
+        case 'inputHack':
             if(!preg_match(REGEXSTRING, $value)){
                 $Validate="is-valid";
             }
@@ -215,7 +153,7 @@ function VerifForm($key,$value){
                 $Validate="is-invalid";        
             }
         break;
-        case 'Exp':
+        case 'inputExp':
             if(preg_match(REGEXCHECKBOX, $value)){
                 $Validate="is-valid";
             }

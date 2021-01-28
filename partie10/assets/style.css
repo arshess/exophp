@@ -1,6 +1,6 @@
 body{
     /* margin-top : -15px; */
-    background : #000000 url("ht tps://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/333980/ccb7e1234dc90b6e83c08f62d148fdc42fd67dec.png") no-repeat fixed;
+    /* background : #000000 url("https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/333980/ccb7e1234dc90b6e83c08f62d148fdc42fd67dec.png") no-repeat fixed; */
     background-size : 100%;
     /* font-size : 12px; */
     /* font-family: 'Press Start 2P', cursive; */
@@ -20,7 +20,7 @@ h2{
     color : black;
 }
 form{
-    background : #cce0ccee;
+    /* background : #cce0ccee; */
     border-radius : 15px;
 }
 input, select{
