@@ -70,8 +70,12 @@ function accueil(){
     if($init==true || array_search('is-invalid',$Validate)){
         require('./vue/VueAccueil.php');        
     }
-    else
+    else{
+        //on reconfigure certains champs
+        $input['BirthDay']= date('d / M / Y',strtotime($input['BirthDay']));
+
         require('./vue/VueGG.php');
+    }
 }
 
 function VerifForm($key,$value){

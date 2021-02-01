@@ -2,11 +2,10 @@ $(function(){
     
     $('input').blur(function(){
         var input = $(this);
-        var valeur = $(this).val();
         $.get({
             url:'./controller/euh.php',
             dataType:'text',
-            data: input.attr('id') + '=' + valeur,
+            data: input.attr('id') + '=' + input.val(),
             success: function(result){
                 var removed='';    
                 if(result=='is-valid'){
