@@ -1,0 +1,21 @@
+/* //////////// */
+/* Page Accueil */
+/* //////////// */
+body{
+    background : #50EBEC;
+
+}
+.formIndex{
+    background : #CFECECcc;
+
+}
+/* //////////////// */
+/* Pages connectées */
+/* //////////////// */
+main{
+    
+}
+footer{    
+    position: absolute;
+    bottom : 0;
+}

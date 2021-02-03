@@ -2,7 +2,8 @@
 function accueil(){
 
     if(isset($_POST['submit'])){
-        $uploadedfile = $_FILES['inputFile'];        
+        $uploadedfile = $_FILES['inputFile'];
+        list($width, $height) = getimagesize($uploadedfile);        
         //on recupère l'extension
         $ext = pathinfo($_FILES['inputFile']['name']);
         $ext = strtolower($ext['extension']);
